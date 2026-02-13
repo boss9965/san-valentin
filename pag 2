@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARA UNA PRINCESITA HERMOSA</title>
+    <style>
+        :root {
+            --rosa-principal: #ff4d6d;
+            --fondo-rosa-claro: #189ac2;
+            --color-texto: #333;
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column; /* Para Snoopy arriba y tarjeta abajo */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: var(--fondo-rosa-claro);
+            font-family: 'Arial Rounded MT Bold', sans-serif;
+            overflow: hidden; /* Para que los corazones salgan de la pantalla */
+        }
+
+        /* Contenedor de Snoopy */
+        .snoopy-container {
+            position: relative;
+            z-index: 10;
+            margin-bottom: 20px; /* Espacio entre Snoopy y la tarjeta */
+            animation: float 3s ease-in-out infinite; /* Animación flotante */
+        }
+
+        .snoopy-img {
+    width: 550px !important;   /* Ajusta este número hasta que te guste el tamaño */
+    height: auto !important;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15)); /* Esto le dará profundidad */
+}
+
+        /* Contenedor de la Tarjeta con el texto y botón */
+        .card {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            z-index: 5;
+            max-width: 350px; /* Ancho máximo para el texto */
+        }
+
+        h1 {
+            color: var(--rosa-principal);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: var(--color-texto);
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        .btn-love {
+            background-color: var(--rosa-principal);
+            color: rgb(248, 248, 248);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        .btn-love:hover {
+            background-color: #ef233c;
+            transform: scale(1.1);
+        }
+
+        /* Carta Secreta que aparece */
+        #mensaje-secreto {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            border: 3px solid var(--rosa-principal);
+            box-shadow: 0 0 100px rgba(0,0,0,0.3);
+            z-index: 100; /* Asegura que esté por encima de todo */
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Animaciones */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes pop {
+            from { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+
+        /* Corazones de fondo */
+        .heart-particle {
+            position: absolute;
+            color: var(--rosa-principal);
+            pointer-events: none; /* Para que no interfieran con el clic */
+            animation: fall linear forwards;
+            z-index: 1; /* Para que estén detrás de la tarjeta */
+        }
+
+        @keyframes fall {
+            from { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="snoopy-container">
+        <img src="https://i.pinimg.com/originals/ce/90/a0/ce90a07e066a5039f61b0c0363991f8c.png" 
+             alt="Snoopy con carta" 
+             class="snoopy-img"
+             onerror="this.src='https://i.ibb.co/RTqBpQRx/Whats-App-Image-2026-02-12-at-8-28-23-PM-removebg-preview-Photoroom.png'; this.style.width='100px';">
+    </div>
+
+    <div class="card">
+        <h1>PARA TI❤️</h1>
+        <p>LE ENVIAN ESTO A LA NIÑA MAS HERMOSA  </p>
+        <button class="btn-love" onclick="abrirCarta()">VER</button>
+    </div>
+
+    <div id="mensaje-secreto">
+        <h2 style="color: var(--rosa-principal);">💌 PARA MI PRINCESITA</h2>
+        <p>¡Feliz San Valentín! ESTA CARTA ES PARA ESTE DIA QUE ES MUY ESPECIAL PORQUE LO PASO CONTIGO LA NIÑA MAS HERMOSA LA MAS DIVERTIDA LA MAS CARISMATICA Y ASI PUEDO SEGUIR TODO EL DIA SI ME PONGO A DECIR TODO LO BUENO QUE TIENES PARA RESUMIR TENGO SUERTE DE CONOCERLA SI SI ME LO PERMITE YO ESTARE CON TIGO TODA MI VIDA TANTO PARA LAS BUENAS LAS MALAS Y PARA CUIDARLA PARA QUE NO SE APAGUE ESA SONRISA HERMOSA QUE ME CAUTIVA TAL VEZ SEA MOLESTO ALGUNAS VECES PERO YO LA AMO MUCHO Y ESO NO CREO QUE CAMBIE ESPERO QUE LE AYA GUSTADO ESTE PRECENTE LE AMA MUCHO ESTE NIÑO QUE SE MUERE POR USTED LA AMO
+        <button class="btn-love" style="padding: 10px 20px;" onclick="cerrarCarta()">Cerrar</button>
+    </div>
+
+    <script>
+        function abrirCarta() {
+            document.getElementById('mensaje-secreto').style.display = 'block';
+            // Lanza una ráfaga de corazones al abrir la carta
+            for(let i = 0; i < 30; i++) {
+                setTimeout(crearCorazon, i * 60);
+            }
+        }
+
+        function cerrarCarta() {
+            document.getElementById('mensaje-secreto').style.display = 'none';
+        }
+
+        function crearCorazon() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-particle');
+            heart.innerHTML = '❤️'; // El emoji de corazón
+            heart.style.left = Math.random() * 100 + "vw"; // Posición horizontal aleatoria
+            heart.style.top = '-5vh'; // Empieza un poco por encima de la pantalla
+            heart.style.fontSize = Math.random() * 20 + 10 + "px"; // Tamaño aleatorio
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s"; // Duración de animación aleatoria
+            heart.style.opacity = Math.random() * 0.7 + 0.3; // Opacidad aleatoria
+
+            document.body.appendChild(heart);
+
+            // Elimina el corazón después de que termine la animación para no sobrecargar el DOM
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        // Generar corazones continuamente en el fondo
+        setInterval(crearCorazon, 400); // Crea un corazón cada 400ms
+    </script>
+</body>
+</html>
